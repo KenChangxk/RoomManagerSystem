@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>注册表单验证</title>
+<link rel="stylesheet" href="css/frozenui.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/base.css" />
+
+</head>
+<script language="JavaScript">
+	function check() {
+		if (document.forms[0].elements[0].value.length == 0) {
+			alert("用户名称不可以为空");
+			document.forms[0].elements[0].focus();
+			return false;
+		} else if (document.forms[0].elements[1].value.length == 0) {
+			alert("用户密码不能为空");
+			document.forms[0].elements[1].focus();
+			return false;
+		} else if (document.forms[0].elements[2].value.length == 0) {
+			alert("确认密码不能为空");
+			document.forms[0].elements[2].focus();
+			return false;
+		} else if (document.forms[0].elements[1].value != document.forms[0].elements[2].value) {
+			alert("两次输入密码不一致");
+			return false;
+		} else if(document.forms[0].elements[3].checked == false &&
+			document.forms[0].elements[4].checked == false) {
+			alert("用户性别不能为空");
+			document.forms[0].elements[3].focus();
+			return false;
+		} else if (document.forms[0].elements[5].value.length == 0) {
+			alert("用户邮箱不能为空");
+			document.forms[0].elements[5].focus();
+			return false;
+		} else if (document.forms[0].elements[6].value.length == 0) {
+			alert("用户电话不能为空");
+			document.forms[0].elements[6].focus();
+			return false;
+		} else {
+			return true;
+		}
+	}
+</script>
+<body>
+	<div class="c-title">
+		<!-- 
+	<div class="logo">
+		<img src="" width="42" height="32" alt="">
+	</div>
+ -->
+		<p class="name">教室租用管理系统</p>
+		<p class="name">注册页面</p>
+	</div>
+
+	<div class="c-login">
+		<form class="loginForm" action="../registerCheckServlet" method="POST"
+			name="form1" onSubmit="return check();">
+			<input type="text" class="userLogo" name="memberName"
+				placeholder="请输入用户名称" /> <input type="password" name="password1"
+				placeholder="请输入密码" /> <input type="password" name="password2"
+				placeholder="请输入确认密码" />
+
+			<div align="left"
+				style="margin: 0px 40px 10px 40px;border-bottom: 1px solid rgb(215,215,215); ">
+				性别：<input type="radio" name="memberSex" value="男" />男&nbsp; <input
+					type="radio" name="memberSex" value="女" />女
+			</div>
+
+			<input type="text" class="userLogo" name="email" placeholder="请输入邮箱" />
+
+			<input type="text" name="memberTel" placeholder="请输入手机号码" />
+			<div align="left"
+					style="margin: 0px 40px 10px 40px;border-bottom: 1px solid rgb(215,215,215); ">
+					普通用户<input type="radio" name="loginPre" value="normal"
+						checked="checked" />&nbsp; 管理员<input type="radio" name="loginPre"
+						value="admin" />
+			</div>
+			 <input
+				type="submit" value="注册" /> <input type="reset" value="重置" />
+		</form>
+	</div>
+
+</body>
+
+</html>
